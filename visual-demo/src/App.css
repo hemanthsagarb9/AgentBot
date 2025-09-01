@@ -1,0 +1,89 @@
+/* Additional custom styles for the visual demo */
+
+.flow-container {
+  height: 100vh;
+  width: 100%;
+}
+
+/* Custom edge styles */
+.react-flow__edge-path {
+  stroke-width: 2;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke-width: 3;
+}
+
+/* Environment labels */
+.environment-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  z-index: 10;
+}
+
+/* Legend */
+.legend {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+/* Animation for active states */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+  }
+}
+
+.state-node.active {
+  animation: glow 2s infinite;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .legend {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin: 16px;
+  }
+  
+  .environment-label {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 8px;
+  }
+}
+
