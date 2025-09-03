@@ -1,0 +1,104 @@
+Got it 👍 — let’s forget about agents and just lay down the PingSSO onboarding standard process as a clean, documented set of notes you can use internally.
+
+⸻
+
+📒 PingSSO Onboarding — Standard Process Notes
+
+1. Purpose
+
+The PingSSO onboarding process allows an internal or external application to integrate with the enterprise Single Sign-On (SSO) platform. It ensures that authentication, authorization, and identity management are handled consistently across the enterprise.
+
+⸻
+
+2. Stakeholders
+	•	Application Team (the consumer) — requests onboarding.
+	•	PingSSO Platform Team — manages SSO configurations and approvals.
+	•	Security / Risk — reviews compliance aspects.
+	•	Product Owner (PO) — approves integration for their business unit.
+
+⸻
+
+3. Environments
+
+Onboarding typically happens per environment:
+	•	Development (Dev)
+	•	Test / SIT (System Integration Testing)
+	•	Staging / UAT
+	•	Production (Prod)
+
+Each environment may require its own Client ID/Secret and approvals.
+
+⸻
+
+4. Requests & Forms
+
+Three standard requests/forms must be raised (often via ServiceNow / Jira or internal portals):
+	1.	New Onboarding Request (OAuth)
+	•	Purpose: to create an application profile in PingSSO.
+	•	Details needed:
+	•	Application name & description
+	•	Business unit
+	•	Environment (Dev / SIT / Staging / Prod)
+	•	Redirect URIs / callback URLs
+	•	Grant types (e.g., Authorization Code, Client Credentials)
+	•	Scopes required
+	•	Contact details of the owning team
+	2.	NSSR (New Shared Secret Request)
+	•	Purpose: to request Client ID / Client Secret.
+	•	Raised per environment.
+	•	Requires justification for secret usage and handling policy.
+	3.	GLAM/GWAM Access Request
+	•	Purpose: to request access for application teams to manage secrets and credentials.
+	•	Covers: who can retrieve/manage the secret from the vault.
+
+⸻
+
+5. Typical Workflow
+	1.	Application team raises New Onboarding Request (OAuth).
+	2.	PingSSO team reviews details, validates redirect URIs, scopes, compliance.
+	3.	PingSSO team provisions app profile in requested environment(s).
+	4.	Application team raises NSSR to get Client ID/Secret.
+	5.	Security validation may happen for Prod requests.
+	6.	GLAM/GWAM requests are raised for the right team members.
+	7.	Secrets delivered securely (via vault or secret manager).
+	8.	Integration testing done in Dev → SIT → Staging.
+	9.	Go-Live in Production after approvals and sign-off.
+
+⸻
+
+6. Information Checklist (must be prepared by Application Team)
+	•	Business Unit name and contacts
+	•	Application name & description
+	•	Environment(s) requested
+	•	Redirect URIs (with HTTPS)
+	•	Grant types and flows required (Auth Code, Client Credentials, etc.)
+	•	Scopes required
+	•	Expected user base (internal staff, external customers, service accounts)
+	•	Justification for scopes/secrets
+	•	Contact group / distribution list for future changes
+
+⸻
+
+7. Timelines & Considerations
+	•	Dev/SIT onboarding: usually quick (1–2 days).
+	•	Staging/Prod onboarding: may require security/risk approval (adds 1–2 weeks).
+	•	Dependencies: application must support OAuth 2.0/OIDC standards.
+	•	Secrets: must be rotated periodically (policy-driven).
+	•	Audit: all requests and approvals are tracked for compliance.
+
+⸻
+
+8. Common Pitfalls
+	•	Missing or incorrect redirect URIs (most frequent rejection cause).
+	•	Requesting unnecessary scopes (security review pushback).
+	•	Not aligning secret management with enterprise policy (e.g., trying to store secrets in code).
+	•	Raising Prod onboarding before testing in lower environments.
+
+⸻
+
+✅ In summary:
+The PingSSO onboarding process requires three key requests (OAuth app profile, NSSR for secrets, GLAM/GWAM for access), environment-wise approvals, and close coordination with the PingSSO team. Prepare redirect URIs, scopes, and contacts up front to avoid delays.
+
+⸻
+
+Do you want me to format this as a step-by-step checklist (like an internal runbook) that your engineers/POs can follow, or keep it as explanatory notes?
